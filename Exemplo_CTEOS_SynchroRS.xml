@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<reqNFeEmi xmlns="http://www.synchro.com.br/nfe" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" versao="3.00" tpDocumento="CTE" xsi:schemaLocation="http://www.synchro.com.br/nfe synCTeEmissaoRequest_v3.00.xsd">
+  <sistOrigem>AUTOMACAO_SP</sistOrigem>
+  <idLoteOrigem>11</idLoteOrigem>
+  <CTeOS>
+    <infCte versao="3.00">
+      <ide>
+        <cUF>43</cUF>
+        <CFOP>5352</CFOP>
+        <natOp>PREST SERV TRANSP P/CONTR INTEREST(ESTABELECIMENTO)INDUST</natOp>
+        <mod>67</mod>
+        <serie>784</serie>
+        <nCT>13</nCT>
+        <dhEmi>2017-01-10T08:00:00-02:00</dhEmi>
+        <tpImp>1</tpImp>
+        <tpEmis>N</tpEmis>
+        <tpCTe>0</tpCTe>
+        <cMunEnv>4314902</cMunEnv>
+        <xMunEnv>PORTO ALEGRE</xMunEnv>
+        <UFEnv>RS</UFEnv>
+        <modal>01</modal>
+        <tpServ>6</tpServ>
+        <indIEToma>1</indIEToma>
+        <cMunIni>4303905</cMunIni>
+        <xMunIni>CAMPO BOM</xMunIni>
+        <UFIni>RS</UFIni>
+        <cMunFim>4303905</cMunFim>
+        <xMunFim>CAMPO BOM</xMunFim>
+        <UFFim>RS</UFFim>
+        <chaveOrigem>13</chaveOrigem>
+      </ide>
+      <compl>
+        <xCaracAd>!</xCaracAd>
+        <xEmi>ABASTOS</xEmi>
+        <xObs>CONTRIB AUTORIZADO A EFETUAR O PAGTO DO IMP DE ACORDO COM APENDICE III, SECAO I, ITEM III DO RICMS/RS, CONF REG ESPEC NRO 0540044982. HORARIO ENTREGA: SEG/TER/QUA/QUI/SEX 07:00 18:00 DOM SAB</xObs>
+        <ObsFisco xCampo="obs01">
+          <xTexto>Teste</xTexto>
+        </ObsFisco>
+      </compl>
+    <emit>
+      <CNPJ>67185306000130</CNPJ>
+      <IE>0962702668</IE>
+      <xNome>SYNCHRO SISTEMAS DE INFORMACAO LTDA</xNome>
+      <xFant>SYNCHRO SISTEMAS DE INFORMACAO LTDA</xFant>
+      <enderEmit>
+        <xLgr>AV SEVERO DULLIUS</xLgr>
+        <nro>90010</nro>
+        <xBairro>SAO JOAO</xBairro>
+        <cMun>4314902</cMun>
+        <xMun>PORTO ALEGRE</xMun>
+        <CEP>90200971</CEP>
+        <UF>RS</UF>
+        <fone>1141349800</fone>
+      </enderEmit>
+    </emit>
+    <toma>
+      <CNPJ>61064911000177</CNPJ>
+      <IE>535054653118</IE>
+      <xNome>CT-E EMITIDO EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL</xNome>
+      <fone>21061256</fone>
+      <enderToma>
+        <xLgr>ROD LUIZ DE QUEIROZ SN</xLgr>
+        <nro>0</nro>
+        <xBairro>KM 157</xBairro>
+        <cMun>3538709</cMun>
+        <xMun>PIRACICABA</xMun>
+        <CEP>13420900</CEP>
+        <UF>SP</UF>
+        <cPais>1058</cPais>
+        <xPais>BRASIL</xPais>
+      </enderToma>
+    </toma>
+      <vPrest>
+        <vTPrest>6620</vTPrest>
+        <vRec>10</vRec>
+        <Comp>
+          <xNome>FRETE PESO</xNome>
+          <vComp>10</vComp>
+        </Comp>
+        <Comp>
+          <xNome>DESPACHO</xNome>
+          <vComp>10</vComp>
+        </Comp>
+        <Comp>
+          <xNome>FRETE VALOR</xNome>
+          <vComp>10.00</vComp>
+        </Comp>
+        <Comp>
+          <xNome>GRIS</xNome>
+          <vComp>10.00</vComp>
+        </Comp>
+        <Comp>
+          <xNome>PEDAGIO</xNome>
+          <vComp>10.00</vComp>
+        </Comp>
+        <Comp>
+          <xNome>TAS</xNome>
+          <vComp>10.00</vComp>
+        </Comp>
+      </vPrest>
+      <imp>
+        <ICMS>
+          <ICMS00>
+            <CST>00</CST>
+            <vBC>0</vBC>
+            <pICMS>0</pICMS>
+            <vICMS>0</vICMS>
+          </ICMS00>
+        </ICMS>
+        <infTribFed>
+          <vINSS>1.00</vINSS>
+        </infTribFed>
+      </imp>
+      <infCTeNorm>
+        <infServico>
+          <xDescServ>TESTE</xDescServ>
+        </infServico>
+        <infModal versaoModal="3.00">
+          <rodoOS>
+            <TAF>123456789012</TAF>
+          </rodoOS>
+        </infModal>
+      </infCTeNorm>
+    </infCte>
+  </CTeOS>
+</reqNFeEmi>
+
