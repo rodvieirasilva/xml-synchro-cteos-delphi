@@ -5,10 +5,12 @@ from xml.dom import minidom
 strClassBegin = """unit uSynchro{0};
 
 interface
+    {1}
+
   type TSynchro{0} = class
   private
   public
-
+{2}
 """
 
 strClassEnd = """
@@ -18,7 +20,6 @@ strClassEnd = """
 
 implementation
 
-{{ TSynchro{0} }}
 
 end."""
 
@@ -52,29 +53,40 @@ def processType(name):
 
 
 def visitNode(node, currentFile, dictPropertys):
-
+    result = [];
     if node.height == 2:
-        if  (node.tagName not in dictPropertys):
+        if (node.tagName not in dictPropertys):
             name, typeProperty = processProperty(node.tagName)
-            currentFile.write(
+            result.append(
                 "    property {0} : {1};\n".format(name, typeProperty))
             dictPropertys[node.tagName] = True
     else:
         typeName = processType(node.tagName)
         newFile = open("SAS_Synchro{0}.pas".format(typeName), 'w')
         newDic = {}
-        newFile.write(strClassBegin.format(typeName))
+        strUses = '';
+        propertys = [];
         for child in node.childNodes:
             if child.height != 1:
-                visitNode(child, newFile, newDic)
+                propertys.extend(visitNode(child, newFile, newDic))
                 if child.height > 2:
                     childTypeName = processType(child.tagName)
-                    if  (childTypeName not in newDic):
-                        newFile.write(
+                    if (childTypeName not in newDic):
+                        propertys.append(
                             "    property {0} : TSynchro{0};\n".format(childTypeName))
+                        if(strUses == ''):
+                            strUses = 'use SAS_Synchro{0}';
+                        else:
+                            strUses += ', {0}'
+                        strUses = strUses.format(
+                            childTypeName);
                         newDic[childTypeName] = True
+        if(strUses != ''):
+            strUses += ';';
+        newFile.write(strClassBegin.format(typeName, strUses, ''.join(propertys)));
 
-        newFile.write(strClassEnd.format(typeName))
+        newFile.write(strClassEnd)
+    return result;
 
 
 def calcHeight(node):
