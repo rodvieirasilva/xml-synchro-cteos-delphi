@@ -75,7 +75,7 @@ def visitNode(node, currentFile, dictPropertys):
                         propertys.append(
                             "    property {0} : TSynchro{0};\n".format(childTypeName))
                         if(strUses == ''):
-                            strUses = 'use SAS_Synchro{0}';
+                            strUses = 'uses SAS_Synchro{0}';
                         else:
                             strUses += ', {0}'
                         strUses = strUses.format(
