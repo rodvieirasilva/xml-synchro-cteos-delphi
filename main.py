@@ -1,8 +1,8 @@
-
+#Impot MiniDom to WORK with XML
 from xml.dom import minidom
 
-
-strClassBegin = """unit uSynchro{0};
+#Template to class
+strClassBegin = """unit SAS_Synchro{0};
 
 interface
     {1}
@@ -13,6 +13,7 @@ interface
 {2}
 """
 
+#Template to end of the class
 strClassEnd = """
   end;
 
@@ -24,10 +25,12 @@ implementation
 end."""
 
 
+#Return first caracter of string in Upper case
 def upperFirst(str):
     return str[0].upper() + str[1:]
 
 
+#Process the type and the name of property
 def processProperty(name):
     temp = name
     typeProperty = 'string'
@@ -44,23 +47,27 @@ def processProperty(name):
             if (('DESCR' not in name) and 'TEXTO' not in name):
                 temp = 'Descr' + name[1:]
             temp = name[1:];
-
+    if(name.upper() == 'MOD'):
+        temp = 'mode';
     return upperFirst(temp), typeProperty
 
-
+#process type of the class
 def processType(name):
     return upperFirst(name)
 
-
+#Visit a node and the add file and propertys in a class
 def visitNode(node, currentFile, dictPropertys):
     result = [];
+    #final Node
     if node.height == 2:
+        #if not declared type in father
         if (node.tagName not in dictPropertys):
             name, typeProperty = processProperty(node.tagName)
             result.append(
                 "    property {0} : {1};\n".format(name, typeProperty))
             dictPropertys[node.tagName] = True
     else:
+        #Create new file to Class
         typeName = processType(node.tagName)
         newFile = open("SAS_Synchro{0}.pas".format(typeName), 'w')
         newDic = {}
@@ -77,7 +84,7 @@ def visitNode(node, currentFile, dictPropertys):
                         if(strUses == ''):
                             strUses = 'uses SAS_Synchro{0}';
                         else:
-                            strUses += ', {0}'
+                            strUses += ', SAS_Synchro{0}'
                         strUses = strUses.format(
                             childTypeName);
                         newDic[childTypeName] = True
@@ -88,7 +95,7 @@ def visitNode(node, currentFile, dictPropertys):
         newFile.write(strClassEnd)
     return result;
 
-
+#Calc Height of nodes in XML document
 def calcHeight(node):
     if node.nodeType == node.TEXT_NODE:
         node.height = 1
@@ -101,11 +108,13 @@ def calcHeight(node):
     node.height = maxV + 1
     return node.height
 
-
+#Get root element
 root = minidom.parse('Exemplo_CTEOS_SynchroRS.xml').documentElement
-
+#Calc height of all nodes
 calcHeight(root)
 
+#Visit Nodes and create files
 visitNode(root, '', None)
 
-print('Sucesso')
+#Finish the process
+print('Success')
